@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head><title>test pass validation</title>
+   <link rel="stylesheet" href="style2.css">
+</head>
+<body> 
+<input type="text" id="inpt1" placeholder="enter your pass word">
+<small id="error1" ></small>
+<small id="error2" > </small>
+<small id="error3" ></small>
+<small id="error4" ></small>
+<p>i have a problem</p>
+<script>
+  var perr=document.getElementById("inpt1");
+ var error1=document.getElementById("error1");
+ var error2=document.getElementById("error2");
+ var error3=document.getElementById("error3");
+ var error4=document.getElementById("error4");
+ 
+   perr.addEventListener('input',function(e){
+            e.preventDefault();  
+            
+       if(perr.value.length>=8){
+          error1.style.display = "none";
+        }else{
+          error1.innerHTML = "password should be min. 8-16 char";
+          error1.style.color = "red";
+        }
+        if(/\d/g.test(perr.value)==true){
+          error2.style.display = "none";
+        }
+        else{
+          error2.innerHTML = "atleast one digit";
+          error2.style.color = "red";
+        }
+        if(/[A-Z]/g.test(perr.value)==true || (/[a-z]/g.test(perr.value)==true)){
+         error3.style.display = "none";
+        }else{
+            error3.innerHTML = "atleast one alphabet";
+            error3.style.color = "red";
+        }
+        if(/[!-*]/g.test(perr.value)==true){
+          error4.style.display = "none";
+        }else{
+         error4.innerHTML = "atleast one characters";
+          error4.style.color = "red";
+        }
+        
+       }); 
+</script>
+</body>
+</html>

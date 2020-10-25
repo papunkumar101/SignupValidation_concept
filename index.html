@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Validate Register form</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+
+<body>
+ <div class="bg-image"></div>
+
+<div class="bg-text">
+  <form class="box" action="" method="post" onsubmit="return myfun()" autocomplete="off">
+    <h1>Register</h1>
+    <input type="text" name="" placeholder="Username" id="uname"> <small id="err" style="color: red"></small>
+    <input type="email" name="" placeholder="Email Id" id="umail"> <small id="err1" style="color: red"></small>
+    <input type="number" name="" placeholder="Enter your phn no" id="uphone"> <small id="err2" style="color: red"></small><small id="err2a" style="color: red"></small><small id="err2b" style="color: red"></small>
+    
+    <!--second field-->
+    
+    <input type="password" name="" placeholder="Password" id="upass"> <small id="err3" style="color: red"></small>
+      <small id="perr"></small>
+      <small id="error1"></small>
+      <small id="error2"> </small>
+      <small id="error3"></small>
+      <small id="error4"></small>
+    <input type="password" name="" placeholder="confirm Password" id="ucpass"> <small id="err4" style="color: red"></small>
+    
+    <input type="submit" name="" value="Signup" id="btn">
+  </form>
+</div>
+  <script>
+  
+  var uname=document.getElementById("uname");
+  var umail=document.getElementById("umail");
+  var uphone=document.getElementById("uphone");
+  var upass=document.getElementById("upass");
+  var ucpass=document.getElementById("ucpass");
+
+//for error show
+var err=document.getElementById("err"); //for name val.
+var err1=document.getElementById("err1"); // for email val.
+var err2=document.getElementById("err2"); //for phn no val.1
+var err2a=document.getElementById("err2a"); // for phn no val.2
+var err2b=document.getElementById("err2b"); //for phn no validation
+var err4=document.getElementById("err4");//for con.pass val.
+var perr=document.getElementById("perr");//for pass val.
+var err3=document.getElementById("err3");//for pass val.
+var error1=document.getElementById("error1");//for pass val.
+var error2=document.getElementById("error2");//for pass val.
+var error3=document.getElementById("error3");//for pass val.
+var error4=document.getElementById("error4");//for pass val.
+
+function myfun(){
+ if(true){ 
+  if(uname.value===''){
+    err.innerHTML="please fill user name";
+    uname.focus();
+    return false;
+  }else{err.style.display="none"}
+    
+    
+    
+  if (umail.value==='') {
+    err1.innerHTML = "please fill user mail id";
+    umail.focus();
+    return false;}else{err1.style.display="none"}
+    
+     
+     
+  if (uphone.value === '') {
+    err2.innerHTML = "please fill phone no";
+    uphone.focus();
+    return false;}else{err2.style.display="none"}
+      
+      
+      
+    if (uphone.value.length<=10) {
+    err2a.innerHTML = "please fill valied phone no";
+    uphone.focus();
+    return false;}else{err3.style.display="none"}
+       
+    
+    if (upass.value === '') {
+    err3.innerHTML = "please fill password";
+    upass.focus();
+    return false;}else{err3.style.display="none"}
+    
+    if (ucpass.value == '') {
+    err4.innerHTML = "please fill password again";
+    ucpass.focus();
+    return false;
+  }else{err4.style.display="none"}
+  
+  if (upass.value != ucpass.value) {
+    err4.innerHTML = "please fill password don't match";
+    ucpass.focus();
+    return false;}else{err4.style.display="none"}
+    
+    swal("Good job!", "you successfully login ", "success");
+ }else{
+  swal("Good job!", "you successfully login ", "error");}
+}
+
+
+    /* password validation /upass=input field /*/
+     upass.addEventListener('input',function(e){
+            e.preventDefault();  
+            
+       if(upass.value.length>=8){
+          error1.style.display = "none";
+        }else{
+          error1.innerHTML = "password should be min. 8-16 char";
+          error1.style.color = "red";
+        }
+        if(/\d/g.test(upass.value)==true){
+          error2.style.display = "none";
+        }
+        else{
+          error2.innerHTML = "atleast one digit";
+          error2.style.color = "red";
+        }
+        if(/[A-Z]/g.test(upass.value)==true || (/[a-z]/g.test(upass.value)==true)){
+         error3.style.display = "none";
+        }else{
+            error3.innerHTML = "atleast one alphabet";
+            error3.style.color = "red";
+        }
+        if(/[!-*]/g.test(upass.value)==true){
+          error4.style.display = "none";
+        }else{
+         error4.innerHTML = "atleast one characters";
+          error4.style.color = "red";
+        }
+        
+       }); 
+  </script>
+</body>
+</html>
